@@ -46,26 +46,26 @@
     <!-- This script adds the flutter initialization JS code -->
     <script src="flutter.js" defer></script>
   </head>
-<!--  <body> -->
-<!--     <script> -->
-<!--       window.addEventListener("load", function (ev) { -->
-<!--         // Download main.dart.js -->
-<!--         _flutter.loader -->
-<!--           .loadEntrypoint({ -->
-<!--             serviceWorker: { -->
-<!--               serviceWorkerVersion: serviceWorkerVersion, -->
-<!--             }, -->
-<!--           }) -->
-<!--           .then(function (engineInitializer) { -->
-<!--             return engineInitializer.initializeEngine(); -->
-<!--           }) -->
-<!--           .then(function (appRunner) { -->
-<!--             return appRunner.runApp(); -->
-<!--           }); -->
-<!--       }); -->
-<!--     </script> -->
-<!--   </body>  -->
-  <body>
+ <body>
+    <script>
+      window.addEventListener("load", function (ev) {
+        // Download main.dart.js
+        _flutter.loader
+          .loadEntrypoint({
+            serviceWorker: {
+              serviceWorkerVersion: serviceWorkerVersion,
+            },
+          })
+          .then(function (engineInitializer) {
+            return engineInitializer.initializeEngine();
+          })
+          .then(function (appRunner) {
+            return appRunner.runApp();
+          });
+      });
+    </script>
+  </body> 
+<!--   <body>
 <script src="main.dart.js" type="application/javascript"></script>
   <script>
   if ('serviceWorker' in navigator) {
@@ -88,5 +88,5 @@
     });
   </script>
 </body>
-  <script src="main.dart.js" type="application/javascript"></script>
+  <script src="main.dart.js" type="application/javascript"></script> -->
 </html>
