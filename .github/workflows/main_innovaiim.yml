@@ -42,8 +42,6 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -53,13 +51,6 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-      
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_CBD5115AD589472AA140A5071294CD57 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C160A8BB2A514D7CBB29A2063963AF67 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B43B4006B9734E2C815FF008E0C1321E }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -67,5 +58,5 @@ jobs:
         with:
           app-name: 'InnovaIIM'
           slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8CAD9676D0324427B37C64C7C0ABFEB1 }}
           package: .
-          
